@@ -119,13 +119,6 @@ export const login = async (req, res) => {
   }
 };
 
-export const getMe = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    user: req.user,
-  });
-};
-
 export const logout = async (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
