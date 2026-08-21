@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "../lib/api";
+import ProductCard from "../components/ProductCard";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -31,18 +32,16 @@ export default function Home() {
     return <p>Error: {error}</p>;
   }
 
-  return (
-    <main>
-      <h1>ShopNest</h1>
+   return (
+    <main className="w-full px-6 py-8">
+      <h1 className="text-3xl font-bold mb-6">ShopNest</h1>
 
-      <div>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {products.map((product) => (
-          <div key={product._id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>₹{product.price}</p>
-            <p>Stock: {product.stock}</p>
-          </div>
+          <ProductCard
+            key={product._id}
+            product={product}
+          />
         ))}
       </div>
     </main>
